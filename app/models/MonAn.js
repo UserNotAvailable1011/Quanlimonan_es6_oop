@@ -7,13 +7,13 @@ export class MonAn {
     khuyenMai = 0;
     tenTinhTrang = '';
     maTinhTrang = 0;
-    hinhAnh= '';
+    hinhAnh = '';
     moTa = '';
-    constructor(){
+    constructor() {
 
     }
-    tinhGiaKhuyenMai = () => {
-        return this.giaMon -(this.giaMon * this.khuyenMai / 100);
+    tinhGiaKhuyenMai = function (){
+        return this.giaMon - (this.giaMon * this.khuyenMai / 100);
     }
 }
 

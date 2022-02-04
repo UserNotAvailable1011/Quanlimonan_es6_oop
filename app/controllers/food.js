@@ -3,10 +3,13 @@ import { MonAn } from '../models/MonAn.js';
 import { Menu } from '../models/Menu.js';
 
 var menu = new Menu();
+ //Chạy trnag food.html => tạo menu và lấy các giá trị đã lưu từ Local ra
+menu.layMonAn();
+console.log(menu);
 
 document.querySelector('#btnThemMon').onclick = () => {
     var monAn = new MonAn();
-    let arrInput = document.querySelectorAll('form input, form select, form textarea');
+    var arrInput = document.querySelectorAll('form input, form select, form textarea');
 
     // console.log(arrInput);
     for (let tagInput of arrInput) {
@@ -27,31 +30,36 @@ document.querySelector('#btnThemMon').onclick = () => {
     var arrLi = document.querySelectorAll('#thongTinMonAn li:not(:first-child)');
     for (let li of arrLi) {
         let { id } = li;
-        if(id === 'giaKhuyenMai'){
+        if (id === 'giaKhuyenMai') {
             li.innerHTML = `
             <div>
                 <h6>${id}</h6>
 
                 <p id="pMoTa" class="text-muted">${monAn.tinhGiaKhuyenMai()}</p>
             </div>
-        `   
-        }else{
+        `
+        } else {
             li.innerHTML = `
                 <div>
                     <h6>${id}</h6>
 
-                    <p id="pMoTa" class="text-muted">${monAn[id]}</p>
+                    <p id="pMoTa" class="text-m uted">${monAn[id]}</p>
                 </div>
             `
         }
-        
+
     }
     document.getElementById('imgMonAn').src = monAn.hinhAnh;
-    
+
     //sau khi lấy thông tin món ăn thì thêm món ăn vào menu
 
     menu.themMonAn(monAn);
+    //Sau khi thêm món ăn thì lưu vào LocalStorage
 
-    console.log(menu);
+    console.log(menu.mangMonAn);
+    //Lưu menu
+    menu.luuMonAn();
 }
 
+
+    
